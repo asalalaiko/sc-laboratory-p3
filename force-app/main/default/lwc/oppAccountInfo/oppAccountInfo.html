@@ -1,0 +1,124 @@
+<template>
+    <lightning-card title="Info about Opportunity " icon-name="custom:custom14">
+      
+        <div class="slds-align_absolute-center"> 
+          <div class="slds-p-right_xx-small">
+                   
+              <lightning-button label="Prev"
+              disabled={isPrev} onclick={handlePrev}
+                                  variant="brand"
+                                  icon-name="utility:back"
+                                  name="prev"></lightning-button>  
+          </div>
+          <span class="slds-badge slds-badge_lightest">
+              {recordStart}-{recordEnd} of {totalRecords.data} | Page {pageNumber} of {totalPages}
+          </span>
+          <div class="slds-p-left_xx-small">
+              <lightning-button label="Next"
+              disabled={isNext} onclick={handleNext}
+                                  variant="brand"
+                                  icon-name="utility:forward"
+                                  icon-position="right"
+                                  name="next"></lightning-button>
+          </div>
+      </div>  
+
+      <template if:true={showSearch}>
+        <div class="slds-m-around_medium">
+         <p>Search Opportunity:</p>
+         <lightning-input label="Account" value={searchAcc} onchange={changeHandlerAcc}></lightning-input>
+         <lightning-input type="number" step=".01" formatter="currency" label="Sum" value={searchSum} onchange={changeHandlerSum}></lightning-input>
+        </div>  
+
+      <lightning-accordion allow-multiple-sections-open>
+            <template for:each={Accs.data} for:item="acc">
+              <lightning-accordion-section key={acc.Id}  name={acc.name} label={acc.name}>
+              
+               <lightning-datatable 
+                  key-field="acc.opps.id"
+                  data={acc.opps}
+                  selected-rows={selectedRows}
+                  show-row-number-column
+                  onrowaction={openModal}
+                  row-number-offset={rowOffset}
+                  hide-checkbox-column="true"
+                  columns={columns}>
+               </lightning-datatable>
+              
+     </lightning-accordion-section>
+            </template>
+      </lightning-accordion>
+ 
+     </template> 
+  
+    
+<!--
+    <template if:true={account.data}>
+
+<lightning-accordion allow-multiple-sections-open>
+      <template for:each={Acc.data} for:item="acc">
+        <lightning-accordion-section key={acc.Id}  name={acc.name} label={acc.name}>
+        <table border=1>                 
+          <template for:each={acc.opps} for:item="opp">
+            <tr key={opp.id}>
+                <td><a href={opp.url}>{opp.name}</a></td>
+                <td>{opp.name}</td>
+                <td>{opp.createddate}</td>
+                <td>{opp.closedate}</td>
+                <td>{opp.amount}</td>
+                <td>
+                    <lightning-button name="openModal" value={opp.oppId} label="Product" onclick={openModal} variant="brand" class="slds-m-around_small"></lightning-button>
+                </td>
+            </tr>
+          </template>  
+        </table>
+       </lightning-accordion-section>
+      </template>
+</lightning-accordion>
+
+
+    </template>
+
+  -->
+
+
+
+
+
+
+      
+ <!-- This Modal will only be visible if showModal is set to true -->
+ <template if:true={showModal}>
+  <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_large" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+    <div class="slds-modal__container">
+      <header class="slds-modal__header">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+          <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+          </svg>
+          <span class="slds-assistive-text">Close</span>
+        </button>
+        <h2  class="slds-modal__title slds-hyphenate">Products:</h2>
+      </header>
+       <div class="slds-modal__content slds-p-around_medium" > 
+         <template for:each={Prods.data} for:item="prod">
+
+          <option key={prod.id} value={prod.id} >{prod.Product2.Name}</option>
+       
+        </template>
+               
+      </div>
+      <footer class="slds-modal__footer">
+        <lightning-button variant="brand" label="Close" onclick={closeModal} class="slds-p-around_x-small"></lightning-button>
+      </footer>
+    </div>
+  </section>
+  <div class="slds-backdrop slds-backdrop_open"></div>
+ </template>
+
+
+
+
+ </lightning-card>
+
+</template>

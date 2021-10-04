@@ -1,0 +1,47 @@
+<template>
+    
+    <div class="slds-m-around_medium">
+       
+        <template if:true={email.data}>
+            <div class="slds-m-around_medium">
+
+
+                <lightning-input label="Subject" value={email.data.emailSubject} disabled></lightning-input>
+           
+                <lightning-textarea label="Body" value={email.data.emailBody} ></lightning-textarea>
+                              
+                <lightning-input label="E-mail" value={email.data.emailEmail} disabled></lightning-input>
+
+                <lightning-input label="Name" value={email.data.emailContactName} disabled></lightning-input>
+                                                                                             
+            </div>
+        </template>
+       
+        <lightning-button label="View Invoice" title="View Invoice" onclick={viewPdf} class="slds-m-left_x-small"></lightning-button>
+          
+        <lightning-button label="Send" title="Send" onclick={send} class="slds-m-left_x-small"></lightning-button>
+            
+    </div>    
+                
+              
+</template>  
+  
+  
+
+        
+    
+    
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+
+</template>

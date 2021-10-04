@@ -1,0 +1,42 @@
+<template>
+    
+
+
+     <lightning-card title="Title">
+               
+          <div class="slds-m-around_medium">
+               <p><b>BatchName - </b>{BatchName}</p>
+               <p><b>ScheduleName - </b>{ScheduleName}</p>         
+
+                    === {isWork.data} ===
+
+               <template if:true={isWork.data}>              
+                    <lightning-input name="CRON"  disabled="true" required="true" label="CRON String" value={valueCRON.data}></lightning-input>               
+                    <lightning-button label="Batch"  onclick={onBatch} variant="brand" name="batch"></lightning-button> 
+                    <lightning-button label="Stop Schedulable"  onclick={offSchedulable} variant="brand" name="schedulable"></lightning-button>  
+               </template>
+               
+               
+               <template if:false={isWork.data}>              
+                    <lightning-input name="CRON"  required="true" label="CRON String" value={valueCRON.data}></lightning-input>               
+                    <lightning-button label="Batch"  onclick={onBatch} variant="brand" name="batch"></lightning-button> 
+                    <lightning-button label="Run Schedulable"  onclick={onSchedulable} variant="brand" name="schedulable"></lightning-button>  
+               </template>
+
+
+          
+          </div>           
+          <br>
+          <br>
+          <br>
+        
+
+        
+
+
+
+     </lightning-card>
+
+
+   
+</template>
