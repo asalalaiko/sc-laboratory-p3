@@ -12,9 +12,10 @@ export default class LwcSchedule extends LightningElement {
     @api BatchName;
     @api ScheduleName;
 
-    valueCRON ='';
+    //valueCRON ='';
     @track State;
     @track isWork;
+    @track valueCRON1;
 
     @wire(getCRON, {NameCronJobDetail: "$ScheduleName"})valueCRON;
     @wire(isWorkedTrigger, {NameCronJobDetail: "$ScheduleName"})isWork;    
@@ -26,7 +27,7 @@ export default class LwcSchedule extends LightningElement {
     }
 
     onSchedulable(){
-          tets2({NameCronJobDetail: this.ScheduleName, CRONstr:this.valueCRON.data});
+          tets2({NameCronJobDetail: this.ScheduleName, CRONstr:this.valueCRON1.data});
           window.location.reload();
         }
    
@@ -36,7 +37,7 @@ export default class LwcSchedule extends LightningElement {
     }   
 
     changevalueCRON(event){
-    this.valueCRON.data = event.target.value;
+    this.valueCRON1.data = event.target.value;
     }
         
   }

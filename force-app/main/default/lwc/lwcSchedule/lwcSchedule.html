@@ -8,7 +8,6 @@
                <p><b>BatchName - </b>{BatchName}</p>
                <p><b>ScheduleName - </b>{ScheduleName}</p>         
 
-                    === {isWork.data} ===
 
                <template if:true={isWork.data}>              
                     <lightning-input name="CRON"  disabled="true" required="true" label="CRON String" value={valueCRON.data}></lightning-input>               
@@ -18,7 +17,7 @@
                
                
                <template if:false={isWork.data}>              
-                    <lightning-input name="CRON"  required="true" label="CRON String" value={valueCRON.data}></lightning-input>               
+                    <lightning-input name="CRON"  required="true" label="CRON String" value={valueCRON.data} onchange={changevalueCRON}></lightning-input>               
                     <lightning-button label="Batch"  onclick={onBatch} variant="brand" name="batch"></lightning-button> 
                     <lightning-button label="Run Schedulable"  onclick={onSchedulable} variant="brand" name="schedulable"></lightning-button>  
                </template>
