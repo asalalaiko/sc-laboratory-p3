@@ -68,7 +68,7 @@ public with sharing  class SchedulableDetailLWC {
 		System.schedule(NameCronJobDetail, CRONstr, (Schedulable)newSchedulerType.newInstance());
     } 
 
-     @AuraEnabled(cacheable=true)
+    @AuraEnabled(cacheable=true)
     public static void tets2(String NameCronJobDetail, String CRONstr){
          try {
         System.debug('-----CRONstr------------>');
@@ -81,6 +81,13 @@ public with sharing  class SchedulableDetailLWC {
            System.debug('updateUsersFirstName error: ' + e.getMessage());
        }
             }
-   
+  
+            
+
+    @AuraEnabled(cacheable=true)   
+    public static String infoBatch(String BatchName){
+        if (BatchName!=null) return [SELECT Body FROM ApexClass WHERE Name =: BatchName LIMIT 1].Body;
+        else return 'class name is incorrect';
+    }        
      
 }
