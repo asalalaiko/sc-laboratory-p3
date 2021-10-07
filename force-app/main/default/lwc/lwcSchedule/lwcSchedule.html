@@ -1,41 +1,30 @@
 <template>
-    
-
-
      <lightning-card title="Title">
                
-          <div class="slds-m-around_medium">
+          <div class="slds-m-top_small slds-m-bottom_medium slds-m-around_medium">
                <p><b>BatchName - </b>{BatchName}</p>
                <p><b>ScheduleName - </b>{ScheduleName}</p>         
 
 
-               <template if:true={isWork.data}>              
-                    <lightning-input name="CRON"  disabled="true" required="true" label="CRON String" value={valueCRON.data}></lightning-input>               
-                    <lightning-button label="Batch"  onclick={onBatch} variant="brand" name="batch"></lightning-button> 
-                    <lightning-button label="Stop Schedulable"  onclick={offSchedulable} variant="brand" name="schedulable"></lightning-button>  
+               <template if:true={isWork.data}>  
+                    <div class="slds-p-around_medium lgc-bg">
+                         <lightning-input name="CRON"  disabled="true" required="true" label="CRON String" value={valueCRON.data}></lightning-input>               
+                    </div>
+                    <lightning-button label="Batch"  onclick={onBatch} variant="brand" name="batch" class="slds-m-left_x-small"></lightning-button> 
+                    <lightning-button label="Stop Schedulable"  onclick={offSchedulable} variant="brand" name="schedulable" class="slds-m-left_x-small"></lightning-button>  
                </template>
                
                
                <template if:false={isWork.data}>              
-                    <lightning-input name="CRON"  required="true" label="CRON String" value={valueCRON.data} onchange={changevalueCRON}></lightning-input>               
-                    <lightning-button label="Batch"  onclick={onBatch} variant="brand" name="batch"></lightning-button> 
-                    <lightning-button label="Run Schedulable"  onclick={onSchedulable} variant="brand" name="schedulable"></lightning-button>  
+                    <div class="slds-p-around_medium lgc-bg">
+                         <lightning-input name="CRON"  required="true" label="CRON String" value={valueCRON.data} onchange={changevalueCRON}></lightning-input>              
+                    </div>
+                    <lightning-button label="Batch"  onclick={onBatch} variant="brand" name="batch" class="slds-m-left_x-small"></lightning-button> 
+                    <lightning-button label="Run Schedulable"  onclick={onSchedulable} variant="brand" name="schedulable" class="slds-m-left_x-small"></lightning-button>  
                </template>
-
-
-          
+         
           </div>           
-          <br>
-          <br>
-          <br>
-        
+    </lightning-card>
 
-        
-
-
-
-     </lightning-card>
-
-
-   
+ 
 </template>
